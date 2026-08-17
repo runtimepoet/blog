@@ -20,7 +20,7 @@ const projects: Project[] = [
     en: 'A Material 3 Expressive weather app for Android: dynamic theming, animated weather backdrops, radar maps. Kotlin + Jetpack Compose.',
     tech: ['Kotlin', 'Jetpack Compose', 'Material 3', 'Android'],
     url: 'https://github.com/runtimepoet/WeatherPoet',
-    date: '2026-05',
+    date: '2026-04',
   },
   {
     emoji: '🕛',
@@ -29,7 +29,7 @@ const projects: Project[] = [
     en: 'A Material Expressive clock app: world clock, alarms, timers — modern Android design language done right.',
     tech: ['Kotlin', 'Jetpack Compose', 'Material 3', 'Android'],
     url: 'https://github.com/runtimepoet/ClockPoet',
-    date: '2026-05',
+    date: '2025-09',
   },
   {
     emoji: '🎬',
@@ -38,7 +38,7 @@ const projects: Project[] = [
     en: 'A watchlist app for TV shows & movies powered by TMDB — track watching / pending / completed titles. Material 3 Expressive UI.',
     tech: ['Kotlin', 'Jetpack Compose', 'TMDB', 'Android'],
     url: 'https://github.com/runtimepoet/WatchPoet',
-    date: '2026-05',
+    date: '2026-01',
   },
   {
     emoji: '🎤',
@@ -47,7 +47,7 @@ const projects: Project[] = [
     en: 'A Material Expressive voice recorder: clean recording & management, inspired by the Pixel Recorder.',
     tech: ['Kotlin', 'Jetpack Compose', 'Material 3', 'Android'],
     url: 'https://github.com/runtimepoet/RecordPoet',
-    date: '2026-05',
+    date: '2025-11',
   },
   {
     emoji: '🗒️',
@@ -56,7 +56,7 @@ const projects: Project[] = [
     en: 'A notes app for Android: rich formatting, tags, export/import, list & grid views.',
     tech: ['JavaScript', 'Android', 'Material Design'],
     url: 'https://github.com/runtimepoet/NotesPoet',
-    date: '2026-05',
+    date: '2025-02',
   },
   {
     emoji: '🔮',
@@ -65,7 +65,7 @@ const projects: Project[] = [
     en: 'A tiny mind-reading web toy: the classic math trick in vanilla JS — zero dependencies, under 300 KB.',
     tech: ['JavaScript', 'HTML', 'CSS'],
     url: 'https://github.com/runtimepoet/MindPoet',
-    date: '2026-05',
+    date: '2025-02',
   },
   {
     emoji: '💳',
