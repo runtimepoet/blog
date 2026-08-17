@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="55"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="#160d12"/>
+  <g filter="url(#blur)">
+    <circle cx="180" cy="150" r="220" fill="#8c2f39" opacity="0.8"/>
+    <circle cx="520" cy="80" r="160" fill="#d95d5d" opacity="0.55"/>
+    <circle cx="900" cy="140" r="200" fill="#5b3a8c" opacity="0.6"/>
+    <circle cx="1350" cy="100" r="230" fill="#b23a48" opacity="0.6"/>
+    <circle cx="1550" cy="420" r="180" fill="#e0a458" opacity="0.45"/>
+    <circle cx="1180" cy="380" r="140" fill="#3b6ea5" opacity="0.4"/>
+    <circle cx="760" cy="330" r="150" fill="#c1666b" opacity="0.5"/>
+    <circle cx="330" cy="430" r="200" fill="#7b2d8b" opacity="0.5"/>
+    <circle cx="90" cy="640" r="180" fill="#e08e79" opacity="0.45"/>
+    <circle cx="560" cy="620" r="170" fill="#9356a0" opacity="0.5"/>
+    <circle cx="980" cy="640" r="190" fill="#d1495b" opacity="0.45"/>
+    <circle cx="1420" cy="700" r="210" fill="#662a5c" opacity="0.55"/>
+    <circle cx="240" cy="900" r="200" fill="#c4622d" opacity="0.45"/>
+    <circle cx="700" cy="920" r="180" fill="#8338a8" opacity="0.45"/>
+    <circle cx="1100" cy="900" r="160" fill="#e26d5c" opacity="0.4"/>
+    <circle cx="1500" cy="950" r="170" fill="#3f5e9e" opacity="0.4"/>
+    <circle cx="60" cy="330" r="120" fill="#f2b880" opacity="0.35"/>
+    <circle cx="1240" cy="60" r="110" fill="#e7c8dd" opacity="0.3"/>
+  </g>
+</svg>

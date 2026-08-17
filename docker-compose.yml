@@ -1,0 +1,29 @@
+services:
+  blog:
+    build: .
+    container_name: blog
+    expose:
+      - "8080"
+    environment:
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-change-me}
+    volumes:
+      - blog-data:/app/data
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./certs:/certs:ro
+      - caddy-data:/data
+    depends_on:
+      - blog
+    restart: unless-stopped
+
+volumes:
+  blog-data:
+  caddy-data:
