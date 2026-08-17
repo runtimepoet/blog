@@ -1,87 +1,99 @@
 [
   {
-    "emoji": "🥗",
-    "name": "FreshBite",
-    "zh": "一个简单的食物订购网页：React 19 + TypeScript 店面，ASP.NET Core 9 + FormCMS 无头后端，SQLite，单容器 Docker 部署。",
-    "en": "A simple food-ordering web app: React 19 + TypeScript storefront, ASP.NET Core 9 + FormCMS headless backend, SQLite, single-container Docker deploy.",
+    "emoji": "🌦️",
+    "name": "WeatherMaster",
+    "zh": "Material 3 Expressive 风格的 Android 天气应用：动态主题、动画天气背景、雷达图，Kotlin + Jetpack Compose。",
+    "en": "A Material 3 Expressive weather app for Android: dynamic theming, animated weather backdrops, radar maps. Kotlin + Jetpack Compose.",
     "tech": [
-      "React 19",
-      "TypeScript",
-      "ASP.NET Core",
-      "FormCMS",
-      "Docker"
+      "Kotlin",
+      "Jetpack Compose",
+      "Material 3",
+      "Android"
     ],
-    "url": "https://github.com/runtimepoet/freshbite",
-    "date": "2026-08"
+    "url": "https://github.com/runtimepoet/WeatherMaster",
+    "date": "2026-05"
   },
   {
-    "emoji": "📝",
+    "emoji": "🕛",
+    "name": "ClockMaster",
+    "zh": "Material Expressive 时钟应用：世界时钟、闹钟、计时器，像素级还原现代 Android 设计语言。",
+    "en": "A Material Expressive clock app: world clock, alarms, timers — modern Android design language done right.",
+    "tech": [
+      "Kotlin",
+      "Jetpack Compose",
+      "Material 3",
+      "Android"
+    ],
+    "url": "https://github.com/runtimepoet/ClockMaster",
+    "date": "2026-05"
+  },
+  {
+    "emoji": "🎬",
+    "name": "WatchMaster",
+    "zh": "追剧清单应用：TMDB 数据源，追踪在看 / 待看 / 已看完的剧和电影，Material 3 Expressive UI。",
+    "en": "A watchlist app for TV shows & movies powered by TMDB — track watching / pending / completed titles. Material 3 Expressive UI.",
+    "tech": [
+      "Kotlin",
+      "Jetpack Compose",
+      "TMDB",
+      "Android"
+    ],
+    "url": "https://github.com/runtimepoet/WatchMaster",
+    "date": "2026-05"
+  },
+  {
+    "emoji": "🎤",
+    "name": "RecordMaster",
+    "zh": "Material Expressive 录音应用：干净的录音与管理体验，灵感来自 Pixel Recorder。",
+    "en": "A Material Expressive voice recorder: clean recording & management, inspired by the Pixel Recorder.",
+    "tech": [
+      "Kotlin",
+      "Jetpack Compose",
+      "Material 3",
+      "Android"
+    ],
+    "url": "https://github.com/runtimepoet/RecordMaster",
+    "date": "2026-05"
+  },
+  {
+    "emoji": "🗒️",
+    "name": "NotesMaster",
+    "zh": "Android 笔记应用：富文本格式、标签、导出导入、列表/网格视图切换。",
+    "en": "A notes app for Android: rich formatting, tags, export/import, list & grid views.",
+    "tech": [
+      "JavaScript",
+      "Android",
+      "Material Design"
+    ],
+    "url": "https://github.com/runtimepoet/NotesMaster",
+    "date": "2026-05"
+  },
+  {
+    "emoji": "🔮",
+    "name": "MindReader",
+    "zh": "读心术小网页：经典数学把戏的纯前端实现，零依赖，300KB 不到。",
+    "en": "A tiny mind-reading web toy: the classic math trick in vanilla JS — zero dependencies, under 300 KB.",
+    "tech": [
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "url": "https://github.com/runtimepoet/MindReader",
+    "date": "2026-05"
+  },
+  {
+    "emoji": "✍️",
     "name": "runtimepoet · blog",
-    "zh": "你正在看的这个站：Vue 3 + Vite 驱动的 Markdown 博客，毛玻璃 UI，GitHub Pages 自动部署。",
-    "en": "This very site: a Vue 3 + Vite Markdown blog with a glassmorphism UI, auto-deployed to GitHub Pages.",
+    "zh": "你正在看的这个站：Vue 3 + Vite Markdown 博客，毛玻璃 UI，零依赖 Node 后端，单容器 Docker 部署。",
+    "en": "This very site: a Vue 3 + Vite Markdown blog with a glassmorphism UI, zero-dependency Node backend, single-container Docker deploy.",
     "tech": [
       "Vue 3",
       "TypeScript",
       "Vite",
-      "GitHub Pages"
-    ],
-    "url": "https://github.com/runtimepoet/blog",
-    "date": "2026-08"
-  },
-  {
-    "emoji": "🧩",
-    "name": "FormCMS",
-    "zh": "开源无头 CMS：ASP.NET Core + React，REST / GraphQL 双 API，内置 GrapesJS 页面设计器。",
-    "en": "Open-source headless CMS: ASP.NET Core + React, dual REST / GraphQL APIs, built-in GrapesJS page designer.",
-    "tech": [
-      "C#",
-      "ASP.NET Core",
-      "React",
-      "GraphQL"
-    ],
-    "url": "https://github.com/runtimepoet/formcms",
-    "date": "2025"
-  },
-  {
-    "emoji": "🔓",
-    "name": "vuln-bite",
-    "zh": "故意留漏洞的食物订购靶场：3 个真实漏洞（硬编码凭证 / IDOR / 默认管理员密码），附攻击指南与修复分支，配合博客 writeup 形成攻防闭环。",
-    "en": "A deliberately vulnerable FreshBite variant — 3 real vulnerabilities with exploit guides and fix branches. A security training ground.",
-    "tech": [
-      "Security",
-      "React",
-      "ASP.NET Core",
+      "Node.js",
       "Docker"
     ],
-    "url": "https://github.com/runtimepoet/vuln-bite",
-    "date": "2026-08"
-  },
-  {
-    "emoji": "🪟",
-    "name": "win-kernel-lab",
-    "zh": "原创 Windows 内核实验室：进程监控 / 内存读写 / ETW 仪表盘 / 文件过滤四个驱动级 PoC，全部 MSVC 实测编译通过。",
-    "en": "Original Windows kernel lab — four compile-verified PoCs: process watch, memory RW, ETW live dashboard and a minifilter.",
-    "tech": [
-      "C",
-      "C++",
-      "WDK",
-      "Kernel"
-    ],
-    "url": "https://github.com/runtimepoet/win-kernel-lab",
-    "date": "2025"
-  },
-  {
-    "emoji": "🎬",
-    "name": "vidhub",
-    "zh": "自托管视频床：流式上传、Range 分段秒播、独立播放页与嵌入码，Vue 3 + 零依赖 Node 单容器。",
-    "en": "Self-hosted video bed — streaming uploads, Range/206 playback, player pages and embed codes. Vue 3 + zero-dep Node in one container.",
-    "tech": [
-      "Vue 3",
-      "Node.js",
-      "Docker",
-      "Streaming"
-    ],
-    "url": "https://github.com/runtimepoet/vidhub",
+    "url": "https://github.com/runtimepoet/blog",
     "date": "2026-08"
   }
 ]

@@ -32,7 +32,7 @@ onBeforeUnmount(() => clearInterval(timer))
     <div class="avatar-ring">
       <img
         class="avatar"
-        src="https://avatars.githubusercontent.com/u/53005693?v=4"
+        src="https://avatars.githubusercontent.com/u/5982384?v=4"
         alt="runtimepoet avatar"
         width="104"
         height="104"
@@ -60,11 +60,11 @@ onBeforeUnmount(() => clearInterval(timer))
       <RouterLink class="btn-glass" to="/posts">All posts</RouterLink>
       <a
         class="btn-glass"
-        href="https://github.com/runtimepoet/freshbite"
+        href="https://github.com/runtimepoet/WeatherMaster"
         target="_blank"
         rel="noopener"
       >
-        FreshBite
+        WeatherMaster
       </a>
     </div>
   </section>
