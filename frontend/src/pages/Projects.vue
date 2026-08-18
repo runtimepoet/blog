@@ -78,11 +78,11 @@ const projects: Project[] = [
   },
   {
     emoji: '🪟',
-    name: 'win-kernel-lab',
+    name: 'KernelPoet',
     zh: 'Windows 内核实验室：进程监控 / 跨进程内存读写 / ETW 实时仪表盘 / 文件微过滤四个独立 PoC，WDK x64 编译通过，面向测试 VM。',
     en: 'Windows kernel experiments — four compile-verified PoCs: process notify, cross-process memory RW, ETW realtime dashboard, filesystem minifilter. WDK/x64, test-VM oriented.',
     tech: ['C', 'C++', 'WDK', 'Kernel', 'ETW'],
-    url: 'https://github.com/runtimepoet/win-kernel-lab',
+    url: 'https://github.com/runtimepoet/KernelPoet',
     date: '2025-03',
   },
   {
