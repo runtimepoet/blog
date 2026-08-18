@@ -67,6 +67,11 @@ provisions a Let's Encrypt certificate on its own.
 Data (posts, projects, images) lives in the `blog-data` volume — rebuilds never
 touch it.
 
+> **Building the frontend by hand on Windows?** Set `BUILD_BASE` from
+> PowerShell/cmd, not Git Bash — MSYS rewrites a lone `/` into its install path,
+> so the app ends up loading its assets from the wrong URL. The Docker build sets
+> it inside Linux and is unaffected.
+
 ## ⚙️ Configuration
 
 | Variable | Scope | Default | Purpose |

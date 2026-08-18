@@ -239,6 +239,25 @@ const SECURITY_HEADERS = {
   'Referrer-Policy': 'no-referrer',
 }
 
+// Post bodies are admin-authored Markdown rendered with markdown-it's html:true
+// and injected via v-html — so raw <img onerror>, inline <script> and
+// javascript: URLs reach the DOM verbatim. Omitting 'unsafe-inline' from
+// script-src makes the browser refuse to run every one of them, while the
+// hashed Vite bundle (a same-origin external script) still loads. style-src
+// keeps 'unsafe-inline' because Vue injects scoped styles that way.
+const HTML_CSP = [
+  "default-src 'self'",
+  "script-src 'self'",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data:",
+  "font-src 'self' data:",
+  "connect-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+].join('; ')
+
 function send(res, code, body, type = 'application/json; charset=utf-8', headers = {}) {
   if (res.headersSent || res.writableEnded) return
   res.writeHead(code, { 'Content-Type': type, ...SECURITY_HEADERS, ...headers })
@@ -508,7 +527,9 @@ http
         : ext === '.js' || ext === '.css'
           ? 'public, max-age=86400'                // admin page libs etc.
           : 'no-cache'                             // html and everything else
-      send(res, 200, readFileSync(file), MIME[ext] || 'application/octet-stream', { 'Cache-Control': cache })
+      // the CSP only matters on the documents that render post bodies
+      const csp = ext === '.html' ? { 'Content-Security-Policy': HTML_CSP } : {}
+      send(res, 200, readFileSync(file), MIME[ext] || 'application/octet-stream', { 'Cache-Control': cache, ...csp })
     } catch (err) {
       const status = err instanceof HttpError ? err.status : 500
       if (status >= 500) console.error(err)

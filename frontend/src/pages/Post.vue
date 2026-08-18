@@ -21,7 +21,9 @@ const html = computed(() => (post.value ? renderPost(post.value) : ''))
       </span>
     </p>
     <!-- Rendered from admin-authored Markdown (markdown-it runs with html: true),
-         so post bodies are trusted input — keep the admin panel locked down. -->
+         so raw HTML in a body reaches the DOM as-is. The server's CSP on HTML
+         documents (script-src 'self', no 'unsafe-inline') is what stops an
+         <img onerror>/inline <script>/javascript: payload from executing. -->
     <div class="post-body" v-html="html" />
   </article>
 
