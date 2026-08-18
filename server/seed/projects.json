@@ -97,6 +97,21 @@
     "date": "2026-08"
   },
   {
+    "emoji": "🪟",
+    "name": "win-kernel-lab",
+    "zh": "Windows 内核实验室：进程监控 / 跨进程内存读写 / ETW 实时仪表盘 / 文件微过滤四个独立 PoC，WDK x64 编译通过，面向测试 VM。",
+    "en": "Windows kernel experiments — four compile-verified PoCs: process notify, cross-process memory RW, ETW realtime dashboard, filesystem minifilter. WDK/x64, test-VM oriented.",
+    "tech": [
+      "C",
+      "C++",
+      "WDK",
+      "Kernel",
+      "ETW"
+    ],
+    "url": "https://github.com/runtimepoet/win-kernel-lab",
+    "date": "2026-08"
+  },
+  {
     "emoji": "✍️",
     "name": "runtimepoet · blog",
     "zh": "你正在看的这个站：Vue 3 + Vite Markdown 博客，毛玻璃 UI，零依赖 Node 后端，单容器 Docker 部署。",
