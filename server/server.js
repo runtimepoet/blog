@@ -148,6 +148,7 @@ const getPost = slug => {
 const TOKEN_TTL_MS = 12 * 3600_000
 const LOGIN_MAX_FAILS = 8            // consecutive failures before the lockout kicks in
 const LOGIN_LOCKOUT_MS = 15 * 60_000
+const LOGIN_FAIL_DELAY_MS = 300      // fixed cost per wrong guess
 
 const tokens = new Map()             // token -> expiry ms
 const loginFails = new Map()         // client -> { count, until, seen }
@@ -172,13 +173,36 @@ const authed = req => {
   return true
 }
 
+// A single IPv6 customer usually holds a whole /64, so throttling the exact
+// address would hand an attacker 2^64 free buckets. Key on the prefix instead.
+const addrKey = addr => {
+  if (!addr) return 'unknown'
+  const ip = addr.replace(/^::ffff:/, '')          // IPv4-mapped IPv6
+  if (!ip.includes(':')) return ip
+  const [head, tail = ''] = ip.split('::')
+  const h = head ? head.split(':') : []
+  const t = tail ? tail.split(':') : []
+  const groups = [...h, ...Array(Math.max(0, 8 - h.length - t.length)).fill('0'), ...t]
+  return groups.slice(0, 4).map(g => (g || '0').toLowerCase()).join(':') + '::/64'
+}
+
 const clientKey = req => {
   if (TRUST_PROXY) {
     const xff = req.headers['x-forwarded-for']
-    if (xff) return String(xff).split(',')[0].trim()
+    if (xff) {
+      // Take the LAST entry, not the first: a proxy appends the peer it actually
+      // saw, so everything to its left is whatever the client chose to send.
+      // Trusting the leftmost entry lets an attacker rotate it to dodge the
+      // throttle, or forge a victim's address to lock them out.
+      const hops = String(xff).split(',')
+      const nearest = hops[hops.length - 1].trim()
+      if (nearest) return addrKey(nearest)
+    }
   }
-  return req.socket.remoteAddress || 'unknown'
+  return addrKey(req.socket.remoteAddress)
 }
+
+const sleep = ms => new Promise(r => setTimeout(r, ms))
 
 // hash both sides first: equal-length inputs, so neither length nor content leaks via timing
 const passwordMatches = supplied =>
@@ -266,7 +290,9 @@ const collectBody = (req, maxSize) =>
       settle(() => resolve(Buffer.concat(chunks)))
     }
     function onError(err) {
-      settle(() => reject(err))
+      // a peer that vanishes mid-request is a client event, not a server fault:
+      // logging a stack trace for each one lets anyone flood the logs
+      settle(() => reject(err?.code === 'ECONNRESET' ? new HttpError(400, 'request aborted') : err))
     }
     function onClose() {
       settle(() => reject(new HttpError(400, 'request closed before it finished')))
@@ -314,13 +340,18 @@ async function handleApi(req, res, path, url) {
 
     const body = parseJson(await readBody(req, 4_000), {})
     if (!passwordMatches(body?.password)) {
-      const count = (fail?.count ?? 0) + 1
+      // re-read after the await: the entry may have moved on while the body arrived
+      const current = loginFails.get(key)
+      const count = (current?.count ?? 0) + 1
       const locked = count >= LOGIN_MAX_FAILS
       loginFails.set(key, {
         count: locked ? 0 : count,
         until: locked ? Date.now() + LOGIN_LOCKOUT_MS : 0,
         seen: Date.now(),
       })
+      // a fixed cost per wrong guess: caps the rate even for an attacker who can
+      // rotate whatever we key on (a wide IPv6 block, say) and never gets locked
+      await sleep(LOGIN_FAIL_DELAY_MS)
       return send(res, 401, { error: 'unauthorized' })
     }
     loginFails.delete(key)
@@ -364,6 +395,8 @@ async function handleApi(req, res, path, url) {
     if (!authed(req)) return send(res, 401, { error: 'unauthorized' })
     const arr = parseJson(await readBody(req))
     if (!Array.isArray(arr)) return send(res, 400, { error: 'expected an array' })
+    if (arr.some(p => !p || typeof p !== 'object' || Array.isArray(p)))
+      return send(res, 400, { error: 'every entry must be an object' })
     db.exec('BEGIN')
     try {
       db.exec('DELETE FROM projects')

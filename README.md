@@ -72,7 +72,7 @@ touch it.
 | Variable | Scope | Default | Purpose |
 | -------- | ----- | ------- | ------- |
 | `ADMIN_PASSWORD` | runtime | `change-me` | admin login — always set this; the default is public knowledge |
-| `TRUST_PROXY` | runtime | `0` | set to `1` only behind a reverse proxy you control, so login throttling reads `X-Forwarded-For` |
+| `TRUST_PROXY` | runtime | `0` | set to `1` only behind exactly one reverse proxy you control (the bundled Caddy); login throttling then keys on the **last** `X-Forwarded-For` entry |
 | `DATA_DIR` | runtime | `/app/data` | where posts/projects/images live |
 | `BUILD_BASE` | build | `/blog/` | URL base; `/` for self-hosting |
 | `VITE_LAUNCH_DATE` | build | repo's real launch | uptime counter in the footer |
@@ -81,6 +81,11 @@ touch it.
 
 The admin panel is a single shared password, so the server backs it up with a
 few guardrails: failed logins are throttled per client (8 consecutive misses →
-15-minute lockout), the password is compared in constant time, tokens expire
-after 12 hours, and uploaded SVGs are served under a `sandbox` CSP so a stored
-image can never run script on the site's origin.
+15-minute lockout, keyed on the IPv6 /64 rather than the exact address, plus a
+fixed delay per wrong guess), the password is compared in constant time, tokens
+expire after 12 hours, and uploaded SVGs are served under a `sandbox` CSP so a
+stored image can never run script on the site's origin.
+
+Those bound a single-source attack, not a distributed one — an attacker spread
+across many networks still gets a fresh bucket per source. **The password itself
+is the real control, so make it long and random.**
