@@ -83,7 +83,7 @@ const projects: Project[] = [
     en: 'Windows kernel experiments — four compile-verified PoCs: process notify, cross-process memory RW, ETW realtime dashboard, filesystem minifilter. WDK/x64, test-VM oriented.',
     tech: ['C', 'C++', 'WDK', 'Kernel', 'ETW'],
     url: 'https://github.com/runtimepoet/win-kernel-lab',
-    date: '2026-08',
+    date: '2025-03',
   },
   {
     emoji: '✍️',
