@@ -20,7 +20,8 @@ const html = computed(() => (post.value ? renderPost(post.value) : ''))
         <span v-for="tag in post.tags" :key="tag" class="tag">#{{ tag }}</span>
       </span>
     </p>
-    <!-- Content is authored locally in Markdown, so v-html is safe here -->
+    <!-- Rendered from admin-authored Markdown (markdown-it runs with html: true),
+         so post bodies are trusted input — keep the admin panel locked down. -->
     <div class="post-body" v-html="html" />
   </article>
 
