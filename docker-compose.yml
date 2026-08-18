@@ -5,7 +5,10 @@ services:
     expose:
       - "8080"
     environment:
-      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-change-me}
+      # no default on purpose: an exposed admin panel should never fall back to a known password
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?set ADMIN_PASSWORD (e.g. in a .env file) before starting}
+      # behind Caddy, so X-Forwarded-For is trustworthy and login throttling can key on the real client
+      TRUST_PROXY: "1"
     volumes:
       - blog-data:/app/data
     restart: unless-stopped
@@ -16,9 +19,10 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-localhost}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - ./certs:/certs:ro
       - caddy-data:/data
     depends_on:
       - blog

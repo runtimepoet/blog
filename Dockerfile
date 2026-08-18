@@ -2,7 +2,7 @@
 FROM node:24-alpine AS fe
 WORKDIR /fe
 COPY frontend/package.json frontend/package-lock.json* ./
-RUN npm install --no-audit --no-fund
+RUN npm ci --no-audit --no-fund
 COPY frontend/ .
 ENV BUILD_BASE=/ \
     VITE_LAUNCH_DATE=2021-08-13T00:00:00+08:00

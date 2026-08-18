@@ -1,0 +1,12 @@
+# Front door for the blog container.
+#
+#   SITE_ADDRESS=blog.example.com docker compose up -d --build
+#
+# Defaults to localhost, which makes Caddy issue a local (self-signed) cert —
+# handy for trying the full stack out. Set SITE_ADDRESS to a real domain and
+# Caddy provisions a Let's Encrypt certificate automatically.
+
+{$SITE_ADDRESS:localhost} {
+	encode zstd gzip
+	reverse_proxy blog:8080
+}
