@@ -21,8 +21,12 @@ services:
       - "443:443"
     environment:
       SITE_ADDRESS: ${SITE_ADDRESS:-localhost}
+      # only used when CADDYFILE=./Caddyfile.tls — paths *inside* the container
+      TLS_CERT: ${TLS_CERT:-}
+      TLS_KEY: ${TLS_KEY:-}
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ${CADDYFILE:-./Caddyfile}:/etc/caddy/Caddyfile:ro
+      - ./certs:/etc/caddy/certs:ro
       - caddy-data:/data
     depends_on:
       - blog

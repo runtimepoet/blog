@@ -1,0 +1,18 @@
+# Production variant: serve with YOUR OWN certificate instead of Caddy's
+# automatic Let's Encrypt flow (useful for ECC certs issued elsewhere, or
+# when ports 80/443 can't be reached by the ACME challenge).
+#
+# Required env (e.g. in .env next to docker-compose.yml):
+#   SITE_ADDRESS=blog.example.com
+#   CADDYFILE=./Caddyfile.tls
+#   TLS_CERT=/etc/caddy/certs/fullchain.pem   (path inside the container)
+#   TLS_KEY=/etc/caddy/certs/privkey.key
+#
+# Put the cert files under ./certs/ on the host — compose mounts it read-only
+# at /etc/caddy/certs.
+
+{$SITE_ADDRESS} {
+	tls {$TLS_CERT} {$TLS_KEY}
+	encode zstd gzip
+	reverse_proxy blog:8080
+}

@@ -12,3 +12,7 @@ data/
 .DS_Store
 .idea/
 .vscode/
+
+# never commit TLS material
+certs/*
+!certs/.gitkeep
