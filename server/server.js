@@ -237,6 +237,26 @@ const SECURITY_HEADERS = {
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',
   'Referrer-Policy': 'no-referrer',
+  // Pin clients to HTTPS for a year. Browsers only act on this over a working
+  // TLS connection, so the plain-HTTP dev run is unaffected and the localhost
+  // self-signed setup simply ignores it; in production every response reaches
+  // the client through Caddy's TLS. includeSubDomains also covers www and any
+  // other subdomain — keep them HTTPS-only. `preload` is left off on purpose:
+  // submitting to the preload list is hard to reverse, so append it and go to
+  // hstspreload.org only once you're sure every subdomain is TLS-only.
+  'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
+  // The blog uses none of these capabilities, so deny them site-wide. If a
+  // script ever does slip past the CSP, it still can't reach the camera, mic,
+  // geolocation, USB, payment, etc.
+  'Permissions-Policy':
+    'accelerometer=(), autoplay=(), camera=(), display-capture=(), ' +
+    'encrypted-media=(), fullscreen=(self), geolocation=(), gyroscope=(), ' +
+    'magnetometer=(), microphone=(), midi=(), payment=(), usb=()',
+  // Give this document its own browsing-context group: a page we open (or one
+  // that opens us) can't get a handle to our window. Cross-Origin-Resource-Policy
+  // is deliberately not set — the images under /img/ and the hashed bundle are
+  // meant to be publicly loadable, and a same-origin CORP would block that.
+  'Cross-Origin-Opener-Policy': 'same-origin',
 }
 
 // Post bodies are admin-authored Markdown rendered with markdown-it's html:true
