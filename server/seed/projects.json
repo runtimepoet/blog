@@ -112,6 +112,20 @@
     "date": "2025-03"
   },
   {
+    "emoji": "🎯",
+    "name": "vuln-card",
+    "zh": "对 SimpleCard 的完整安全审计：未授权订单查询→卡密窃取链、默认口令/密钥陷阱、限流伪防御——含 HTTP 级复现与修复方案。",
+    "en": "Full security audit of SimpleCard: unauthenticated order-query → card-key theft chain, default credential/JWT pitfalls, rate-limit bypass — with HTTP-level repro and fixes.",
+    "tech": [
+      "Security",
+      "Spring Boot",
+      "IDOR",
+      "Audit"
+    ],
+    "url": "https://github.com/runtimepoet/vuln-card",
+    "date": "2026-08"
+  },
+  {
     "emoji": "✍️",
     "name": "runtimepoet · blog",
     "zh": "你正在看的这个站：Vue 3 + Vite Markdown 博客，毛玻璃 UI，零依赖 Node 后端，单容器 Docker 部署。",

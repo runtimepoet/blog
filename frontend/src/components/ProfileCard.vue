@@ -8,7 +8,7 @@ const EMAIL = 'runtimepoet910601@gmail.com'
 
 const postCount = computed(() => posts.value.length)
 const tagCount = computed(() => new Set(posts.value.flatMap(p => p.tags)).size)
-const projectCount = 9
+const projectCount = 10
 </script>
 
 <template>
