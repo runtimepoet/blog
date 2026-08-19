@@ -25,11 +25,11 @@ const latest = computed(() => {
 <template>
   <div class="search-wrap">
     <label class="search-box">
-      <span class="mag">🔍</span>
+      <span class="mag">~/posts $</span>
       <input
         v-model="query"
         type="search"
-        :placeholder="t('搜索标题、描述或标签…', 'Search title, excerpt or tags…')"
+        :placeholder="t('grep 标题、描述或标签…', 'grep title, excerpt or tags…')"
       />
     </label>
   </div>
@@ -67,7 +67,7 @@ const latest = computed(() => {
             theme === 'dark' ? t('日间模式', 'Light mode') : t('夜间模式', 'Dark mode')
           }}</span>
           <span class="row-tags">{{
-            theme === 'dark' ? t('切换到清爽浅色', 'Switch to light') : t('流萤飞舞的深空', 'Fireflies in deep space')
+            theme === 'dark' ? t('切换到浅色终端', 'switch to light terminal') : t('切换到磷光绿终端', 'switch to phosphor green')
           }}</span>
         </button>
       </li>

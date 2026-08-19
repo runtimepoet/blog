@@ -10,7 +10,7 @@ import { t } from './i18n'
 
     <header class="site-header glass-bar">
       <div class="wrap header-inner">
-        <RouterLink to="/" class="brand">runtimepoet<span>{{ t(' の 小站', ' · blog') }}</span></RouterLink>
+        <RouterLink to="/" class="brand">runtimepoet<span>{{ t('@blog:~$', '@blog:~$') }}</span></RouterLink>
         <nav class="site-nav">
           <RouterLink to="/projects">{{ t('项目', 'Projects') }}</RouterLink>
           <RouterLink to="/posts">{{ t('文章', 'Posts') }}</RouterLink>
